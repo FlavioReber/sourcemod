@@ -1,0 +1,8 @@
+gitlab-ci.yml
+Dockerfile
+.dockerignore
+.travis.yml
+.gitmodules
+.github
+.gitattributes
+.arcconfig
