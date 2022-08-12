@@ -67,8 +67,8 @@ jobs:
           sudo dpkg --add-architecture i386
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends \
-            gcc-multilib g++-multilib libstdc++6 lib32stdc++6 \
-            libc6-dev libc6-dev-i386 linux-libc-dev \
+            gcc-multilib g++-multilib libstdc++7 lib32stdc++7 \
+            lib32z1-dev libc6-dev libc6-dev-i386 linux-libc-dev \
             linux-libc-dev:i386 lib32z1-dev ${{ matrix.compiler_cc }}
 
       - name: Select clang compiler
@@ -84,7 +84,7 @@ jobs:
         run: |
           mkdir build
           cd build
-          python ../configure.py --enable-optimize --sdks=${{ join(fromJSON(env.SDKS)) }}
+          python ../configure.py --enable-optimize --sdks=${{ join(fromJSON(env.SDKS)) }} --targets=${{ env.ARCH }} --mms-path=${{ env.DEPENDENCIES_ROOT }}/mmsource-${{ env.MMSOURCE_VERSION }} --hl2sdk-root=${{ env.DEPENDENCIES_ROOT }} --mysql-path=${{ env.DEPENDENCIES_ROOT }}/mysql-${{ env.MYSQL_VERSION }} --mysql64-path=${{ env.DEPENDENCIES_ROOT }}/mysql-${{ env.MYSQL_VERSION }}-x86_64
           ambuild
           cp -R package /tmp/build
 
