@@ -24,9 +24,9 @@ jobs:
       DEPENDENCIES_FOLDER: dependencies
       DEPENDENCIES_ROOT: ${{ github.workspace }}/dependencies
       MYSQL_VERSION: '5.5'
-      MMSOURCE_VERSION: '1.10'
+      MMSOURCE_VERSION: '1.11'
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           submodules: recursive
           path: sourcemod
@@ -133,7 +133,7 @@ jobs:
           prerelease: false
 
       - name: Upload Asset
-        uses: actions/upload-release-asset@v1.0.1
+        uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
